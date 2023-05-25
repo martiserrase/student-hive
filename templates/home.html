@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="welcome">
+        <h1 class="text-center">Welcome to Student Hive!</h1>
+        <p class="text-center">It's a pleasure to have you here, join us to take the most of your stay!</p>
+    </div>
+    <br>
+    {% if not request.user.is_authenticated %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{% static 'images/student_hive_logo.png' %}" alt="image" class="img-fluid">
+                </div>
+                <div class="col-md-6">
+                    <h2>What is Student Hive?</h2>
+                    <p>
+                        Student Hive is a platform that allows students to interact with each other and
+                        with their residence managers. Students can create events for their residence mates, book rooms,
+                        check laundry availability, download the contract, report maintenance issues and much more.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="users">
+                <h2 class="text-center">Let's get started!</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Current Residents</h3>
+                    <p>If you are already a resident of this website, you can log in here and access your account.</p>
+                    <a role="button" class="btn btn-primary mr-3 py-2"
+                       href="{% url 'login' %}">Log in</a>
+                </div>
+                <div class="col-md-6">
+                    <h3>New Residents</h3>
+                    <p>If you are new to this website, you can sign up here and create your account. You can also learn
+                        more
+                        about the benefits and features of becoming a resident in
+                        <a href="{% url 'about-us' %}">About Us</a>
+                    </p>
+                    <a role="button" class="btn btn-primary mr-3 py-2"
+                       href="{% url 'register' %}">Register</a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="card text mx-auto" style="">
+            <div class="card-body">
+                <h3 class="card-subtitle mb-2 text-muted">Testimonials</h3>
+                <br>
+                <blockquote class="blockquote mb-0">
+                    <p>I have been using the Student Hive for a few months now and I must say it is amazing.
+                        It has made my life as a resident so much easier and enjoyable. The website has everything I
+                        need to
+                        manage my stay, from paying rent and bills, to booking amenities and services, to joining events
+                        and
+                        activities. The website is also very user-friendly and intuitive, with a sleek design and fast
+                        performance. The best part is that I can connect with other residents and staff through the
+                        website,
+                        and
+                        get support and feedback whenever I need it. The website is constantly updated and
+                        improved, and the developers are always open to suggestions and feedback. I highly recommend the
+                        Student
+                        Hive website application to anyone who wants to make living in the residence a next level
+                        experience.
+                    </p>
+                    <footer class="blockquote-footer">James Castle <cite title="Date">February 2023</cite></footer>
+                </blockquote>
+                <br>
+                <blockquote class="blockquote mb-0">
+                    <p>The Student Hive website application is a great tool for residents. It helps me keep track of
+                        everything related to my stay, such as rent, bills, amenities, services, events, and activities.
+                        The
+                        website is also very easy to use and navigate, with a modern design and smooth performance. I
+                        love
+                        that I can communicate with other residents and staff through the website, and get help and
+                        advice
+                        whenever I need it. I highly recommend the Student Hive website
+                        application to anyone who wants to make living in the residence a great experience.
+                    </p>
+                    <footer class="blockquote-footer">Cristina Gomez <cite title="Date">February 2023</cite></footer>
+                </blockquote>
+                <br>
+                <blockquote class="blockquote mb-0">
+                    <p>The website application is an amazing tool for residents. It allows me to manage
+                        everything related to my stay, such as rent, bills, amenities, services, events, and activities.
+                        The
+                        website is also very user-friendly and intuitive, with a stylish design and fast performance. I
+                        enjoy that I can interact with other residents and staff through the website, and receive
+                        support
+                        and feedback whenever I need it. I highly recommend the Student Hive.
+                    </p>
+                    <footer class="blockquote-footer">Paul Cameron <cite title="Date">August 2022</cite></footer>
+                </blockquote>
+            </div>
+        </div>
+    {% else %}
+        <h3 class="text-center">Social Features at Student HIVE!</h3>
+        <div class="card-group">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'images/event_photo.jpeg' %}" alt="Event image">
+                <div class="card-body">
+                    <h5 class="card-title">Participate in Events!</h5>
+                    <p class="card-text">Discover endless activities: create and join events, making connections and
+                        enjoying memorable experiences with other students. Embrace fun and meet new people!</p>
+                </div>
+                <div class="card-footer" style="text-align: center">
+                    <small class="text-muted">
+                        <a class="btn btn-info" style="text-align: center" href="{% url 'events' %}">
+                            Check future events!
+                        </a>
+                    </small>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="{% static 'images/study_photo.jpeg' %}" alt="Study room photo">
+                <div class="card-body">
+                    <h5 class="card-title">Group study rooms!</h5>
+                    <p class="card-text">Boost your productivity together! Reserve group study rooms, gather your
+                        friends, and conquer the academic challenges while creating a supportive and focused
+                        environment. Study smart, succeed together!</p>
+                </div>
+                <div class="card-footer" style="text-align: center">
+                    <small class="text-muted">
+                        {# CHANGE THE BUTTON FOR A and REMOVE THE COMING SOON BELOW #}
+                        <button class="btn btn-info" style="text-align: center" href="{% url 'home' %}">
+                            Book a room!
+                        </button>
+                        Coming soon!
+                    </small>
+                </div>
+            </div>
+        </div>
+        <br>
+        <h4 class="text-center">And much more possibilities, explore them around!</h4>
+        <br>
+        <h3 class="text-center">And also, Management Features!</h3>
+        <div class="card-group">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'images/contract_photo.jpeg' %}" alt="Contract doc image">
+                <div class="card-body">
+                    <h5 class="card-title">Contract documentation</h5>
+                    <p class="card-text">Stay informed with contract details! Access essential information, terms, and
+                        agreements effortlessly. Empower yourself with transparency and clarity for a smooth and
+                        confident experience.</p>
+                    <button type="button" class="btn btn-link" href="{% url 'events' %}">Link</button>
+                </div>
+                <div class="card-footer" style="text-align: center">
+                    <small class="text-muted">
+                        <a class="btn btn-info" style="text-align: center" href="{% url 'get-contract' %}">
+                            Book a room!
+                        </a>
+                    </small>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="{% static 'images/maintenance_photo.jpeg' %}" alt="Maintenance image">
+                <div class="card-body">
+                    <h5 class="card-title">Maintenance requests</h5>
+                    <p class="card-text">Effortless maintenance requests! Report issues, track progress, and enjoy swift
+                        resolutions. Experience seamless communication and quick action for a well-maintained living
+                        space.</p>
+                </div>
+                <div class="card-footer" style="text-align: center">
+                    <small class="text-muted">
+                        <a class="btn btn-info" style="text-align: center" href="{% url 'maintenance-new' %}">
+                            Maintenance request
+                        </a>
+                    </small>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="{% static 'images/laundry_photo.jpeg' %}" alt="Laundry image">
+                <div class="card-body">
+                    <h5 class="card-title">Laundry management</h5>
+                    <p class="card-text">Effortless laundry management! Check machine availability online, plan your
+                        loads conveniently, and bid farewell to laundry day woes. Keep your clothes fresh with ease.</p>
+                </div>
+                <div class="card-footer" style="text-align: center">
+                    <small class="text-muted">
+                        {# CHANGE THE BUTTON FOR A and REMOVE THE COMING SOON BELOW #}
+                        <button class="btn btn-info" style="text-align: center" href="{% url 'home' %}">
+                            Check laundry!
+                        </button>
+                        Coming soon!
+                    </small>
+                </div>
+            </div>
+        </div>
+        <br>
+        <h4 class="text-center">And there are more functions, check them!</h4>
+    {% endif %}
+{% endblock %}

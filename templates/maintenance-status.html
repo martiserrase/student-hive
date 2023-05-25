@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <h1>Update Maintenance Request Status</h1>
+    {# REMOVE THE TEXT BELOW WHEN THE CONTRACT IS WORKING #}
+    <h1 class="text-center" style="background-color: red">WORK IN PROGRES</h1>
+    {% csrf_token %}
+    <div>
+        <h4>Are you sure you want to update the status of: "{{ maintenance_request.title }}" with the description
+            "{{ maintenance_request.description }}" to Solved?</h4>
+        <br>
+        <button type="submit" class="btn btn-success">Yes, it's solved!</button>
+        <br>
+        <br>
+        <button type="button" class="btn btn-outline-info" onclick="history.back()">
+            Cancel and go back
+        </button>
+    </div>
+{% endblock %}

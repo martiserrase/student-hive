@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-auto">
+            <h1>Maintenance Requests</h1>
+            <p>Ordered by relevance.</p>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <table class="table table-hover">
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">User</th>
+                <th scope="col">Relevance</th>
+                <th scope="col">Creation Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Update Status</th>
+            </tr>
+            {% for maintenance_request in maintenance_requests %}
+                <tr>
+                    <td>{{ maintenance_request.title }}</td>
+                    <td>{{ maintenance_request.description }}</td>
+                    <td>{{ maintenance_request.user }}</td>
+                    <td>{{ maintenance_request.relevance }}</td>
+                    <td>{{ maintenance_request.creation_date }}</td>
+                    <td>{{ maintenance_request.status }}</td>
+                    <td>
+                        <a href="{% url 'maintenance-status' pk=maintenance_request.id %}">
+                            <i class="fas fa-check"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <h1 class="text-center">Events</h1>
+    <br>
+    <br>
+    <h2 class="text-center">Upcoming events</h2>
+    <br>
+    {% if events|length == 0 %}
+        <h5 class="text-center">We are sorry, there aren't any upcoming events.</h5>
+    {% else %}
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                {% if next_events|length > 0 %}
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                {% endif %}
+                {% for event in next_events|slice:"1:" %}
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter|add:1 }}"></li>
+                {% endfor %}
+            </ol>
+            <div class="carousel-inner">
+                {% if next_events|length > 0 %}
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="{% static next_events.0.0 %}" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h1>{{ next_events.0.1.name }}</h1>
+                            <p>{{ next_events.0.1.date }} at {{ next_events.0.1.hour }}</p>
+                            <br>
+                            <p>{{ next_events.0.1.description }}</p>
+                            <br>
+                            <p>{{ next_events.0.1.location }}</p>
+                            <br><br>
+                        </div>
+                    </div>
+                {% endif %}
+                {% for event in next_events|slice:"1:" %}
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="{% static event.0 %}" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h1>{{ event.1.name }}</h1>
+                            <p>{{ event.1.date }} at {{ event.1.hour }}</p>
+                            <br>
+                            <p>{{ event.1.description }}</p>
+                            <br>
+                            <p>{{ event.1.location }}</p>
+                            <br><br>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if next_events|length > 1 %}
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            {% endif %}
+        </div>
+        <br><br>
+        <h2 class="text-center">List of all upcoming events</h2>
+        {% for event in events %}
+            <h6 style="margin-top:3%;">
+                <div class="card mx-auto" style="width: 80rem;">
+                    <div class="card-body">
+                        <h3 class="d-inline-block card-title">{{ event.name }}</h3>
+                        <p>{{ event.date }} at {{ event.hour }}</p>
+                        <br>
+                        <p>{{ event.description }}</p>
+                        <br>
+                        <p>{{ event.location }}</p>
+                        <br>
+                    </div>
+                </div>
+            </h6>
+        {% empty %}
+            <h5 class="text-center">We are sorry, there aren't any upcoming events.</h5>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

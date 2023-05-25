@@ -1,0 +1,21 @@
+{## Template get-contract IS NOT WORKING, it doesn't cause problems but it doesn't work#}
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="contract">
+            {# REMOVE THE TEXT BELOW WHEN THE CONTRACT IS WORKING #}
+            <h1 class="text-center" style="background-color: red">WORK IN PROGRES</h1>
+            <h1>Get my Contract</h1>
+            <p>This is the contract that you signed to confirm your stay at Student HIVE.
+                Please read it carefully and make sure you understand and agree with all the terms and conditions.</p>
+            <div class="d-none" id="contract-form">
+                {{ form.as_p }}
+            </div>
+            <button type="button" class="btn btn-primary" id="button-submit">
+                Download Contract
+            </button>
+        </div>
+    </div>
+{% endblock %}

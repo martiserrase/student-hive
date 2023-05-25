@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <h1>Create a Maintenance Request</h1>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+        <br><br>
+        <button type="button" class="btn btn-outline-info" onclick="history.back()">
+            Cancel and go back
+        </button>
+    </div>
+{% endblock %}
